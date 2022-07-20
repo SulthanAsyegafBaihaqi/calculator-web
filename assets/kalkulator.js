@@ -16,13 +16,22 @@ function clearCalculator() {
   calculator.isWaitForSecondNumber = false;
 }
 
+// membuat fungsi untuk memasukkan angka ke dalam nilai displayNumber
+function inputDigit(digit) {
+  if (calculator.displayNumber === "0") {
+    calculator.displayNumber = digit;
+  } else {
+    calculator.displayNumber += digit;
+  }
+}
+
 // mendeklarasikan fungsi inverseNumber();
 function inverseNumber() {
   if (calculator.displayNumber === "0") {
     return;
   }
+  calculator.displayNumber = calculator.displayNumber * -1;
 }
-calculator.displayNumber = calculator.displayNumber * -1;
 
 // Mendeklarasikan fungsi operator
 function handleOperator(operator) {
@@ -52,15 +61,6 @@ function performCalculation() {
     result = parseInt(calculator.firstNumber) - parseInt(calculator.displayNumber);
   }
   calculator.displayNumber = result;
-}
-
-// membuat fungsi untuk memasukkan angka ke dalam nilai displayNumber
-function inputDigit(digit) {
-  if (calculator.displayNumber === "0") {
-    calculator.displayNumber = digit;
-  } else {
-    calculator.displayNumber += digit;
-  }
 }
 
 const buttons = document.querySelectorAll(".button");
@@ -94,6 +94,6 @@ for (const button of buttons) {
     }
 
     inputDigit(target.innerText);
-    updateDisplay;
+    updateDisplay();
   });
 }
