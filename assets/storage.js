@@ -27,7 +27,7 @@ function putHistory(data) {
 
 // fungsi digunakan untuk mengembalikan nilai array dari localStorage jika sudah memiliki nilai sebelumnya melalui JSON>parse()
 function showHistory() {
-  if (checkForStorage()) {
+  if (checkForStorage) {
     return JSON.parse(localStorage.getItem(CHACHE_KEY)) || [];
   } else {
     return [];
