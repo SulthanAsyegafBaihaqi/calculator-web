@@ -11,7 +11,7 @@ function putHistory(data) {
     if (localStorage.getItem(CHACHE_KEY) === null) {
       historyData = [];
     } else {
-      historyData = JSON.parse(localStorage, getItem(CHACHE_KEY));
+      historyData = JSON.parse(localStorage.getItem(CHACHE_KEY));
     }
 
     historyData.unshift(data);
@@ -21,13 +21,13 @@ function putHistory(data) {
       historyData.pop();
     }
 
-    localStorage.setItem(CHACHE_KEY, JSON, stringify(historyData));
+    localStorage.setItem(CHACHE_KEY, JSON.stringify(historyData));
   }
 }
 
 // fungsi digunakan untuk mengembalikan nilai array dari localStorage jika sudah memiliki nilai sebelumnya melalui JSON>parse()
 function showHistory() {
-  if (checkForStorage) {
+  if (checkForStorage()) {
     return JSON.parse(localStorage.getItem(CHACHE_KEY)) || [];
   } else {
     return [];
@@ -50,6 +50,8 @@ function renderHistory() {
     row.innerHTML += "<td>" + history.result + "</td>";
 
     historyList.appendChild(row);
-    renderHistory();
   }
 }
+
+// memanggil fungsi renderHistory agar dapat menampilkan riwayat kalkulasi
+renderHistory();

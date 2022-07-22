@@ -68,6 +68,7 @@ function performCalculation() {
     operator: calculator.operator,
     result: result,
   };
+
   putHistory(history);
   calculator.displayNumber = result;
   renderHistory();
